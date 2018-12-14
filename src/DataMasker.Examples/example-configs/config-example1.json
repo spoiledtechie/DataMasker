@@ -2,65 +2,27 @@
   "dataSource": {
     "type": "SqlServer",
     "config": {
-      "connectionString": "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=Clients;Integrated Security=SSPI;"
+      "connectionString": "Data Source=home;Initial Catalog=MinistryPlatform;Integrated Security=True"
     }
   },
   "dataGeneration": {
     "locale": "en"
   },
-  "tables": [    
+  "tables": [
     {
-      "name": "Users",
-      "primaryKeyColumn": "UserId",
+      "name": "dp_Users",
+      "primaryKeyColumn": "User_ID",
       "columns": [
         {
-          "name": "FirstName",
-          "type": "FirstName",
-          "useGenderColumn": "Gender"
-        },
-        {
-          "name": "LastName",
-          "type": "LastName",
-          "useGlobalValueMappings": true,
-          "valueMappings": {
-            "oldValue": "Jones",
-            "newValue": "Smith"
-          }
-        },
-        {
-          "name": "Password",
-          "type": "None",
-          "retainNullValues": false,
-          "useValue": "PasswordForDevEnvironment"
-        },
-        {
-          "name": "DOB",
-          "type": "DateOfBirth",
-          "min": "1950-01-01"          
-        },
-        {
-          "name": "Gender",
-          "ignore": true,
-          "type": "None"
-        },
-        {
-          "name": "Address",
+          "name": "Display_Name",
           "type": "Bogus",
-          "stringFormatPattern": "{{address.fullAddress}}",
-          "retainNullValues": false
+          "stringFormatPattern": "{{name.lastname}}"
         },
         {
-          "name": "ContactNumber",
-          "type": "PhoneNumber",
-          "retainNullValues": false,
-          "stringFormatPattern": "+447#########"
-        },
-        {
-          "name": "Bio",
-          "type": "Lorem",
-          "retainNullValues": false,
-          "min": 5,
-          "max":  10
+          "name": "User_Email",
+          "type": "Bogus",
+          "unique": true,
+          "stringFormatPattern": "{{internet.email}}"
         }
       ]
     }
